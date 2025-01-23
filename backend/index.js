@@ -1,11 +1,12 @@
 import dotenv from 'dotenv/config';
-import { uploadOnCloudinary } from './utils/cloudinary.js';
+import { uploadOnCloudinary } from './controllers/cloudinary.js';
 import express from 'express';
 import { upload } from './middlewares/multer.middleware.js';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import path from 'node:path';
+import {pdf_parser} from './controllers/pdf_extract.js'
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -20,11 +21,13 @@ app.get('/', (req, res) => {
 app.post('/profile', upload.single('avatar'), async (req, res) => {
     console.log(req.file.path)
     try {
-        await uploadOnCloudinary(req.file.path)
+        pdf_parser(req.file.path)
+        const url = await uploadOnCloudinary(req.file.path)
+        res.status(201).send('Profile created successfully!');
     } catch (error) {
         console.error("Cloudinary Error : " + error)
     }
-    res.status(201).send('Profile created successfully!');
+    
 });
 
 app.listen(port, () => {

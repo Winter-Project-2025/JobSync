@@ -21,8 +21,8 @@ export const uploadOnCloudinary = async (filePath) => {
             )
         fs.unlinkSync(filePath)
         console.log("File hasd been uploaded on CLOUDINARY!!!!");
-        console.log(response);
-        return response;
+        console.log(response)
+        return response.url;
     } catch (error) {
         fs.unlinkSync(filePath)
         return null
