@@ -1,12 +1,12 @@
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import { resume_details } from '../models/resume_details.model.js';
-import { resume_data } from '../controllers/gemini.js';
+import { gemini_data } from '../controllers/gemini.js';
 import { MONGODB_NAME } from '../utils/constants.js';
 
 
 
-async function connectDB() {
+export async function connectDB() {
   try {
     await mongoose.connect(`${process.env.MONGODB_URI}/${MONGODB_NAME}`);
     console.log(`MongoDB Connected Successfully !!!`);
@@ -15,10 +15,10 @@ async function connectDB() {
   }
 }
 
-connectDB();
 
-async function addData() {
+export async function addData(filename) {
   try {
+    const resume_data = await gemini_data(filename);
     const data = await resume_details.create({
       firstName: resume_data.firstName,
       lastName: resume_data.lastName,
@@ -76,4 +76,4 @@ async function addData() {
   }
 }
 
-addData();
+
