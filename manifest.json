@@ -1,9 +1,10 @@
 {
-    "name": "JobSync",
-    "version": "0.0.1",
-    "manifest_version": 2,
-    "browser_action": {
-        "default_popup" : "frontend/index.html"
-    },
-    "permissions": ["activeTab"]
+  "name": "JobSync",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "This is an extension for resume parsing.",
+  "browser_action": {
+    "default_popup": "frontend/index.html"
+  },
+  "permissions": ["activeTab", "identity"]
 }
