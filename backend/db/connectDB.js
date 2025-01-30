@@ -1,10 +1,8 @@
-import 'dotenv/config';
-import mongoose from 'mongoose';
-import { resume_details } from '../models/resume_details.model.js';
-import { resume_object } from './resume_db_object.js';
-import { MONGODB_NAME } from '../utils/constants.js';
-
-
+import "dotenv/config";
+import mongoose from "mongoose";
+import { resume_details } from "../models/resume_details.model.js";
+import { resume_object } from "./resume_db_object.js";
+import { MONGODB_NAME } from "../utils/constants.js";
 
 export async function connectDB() {
   try {
@@ -14,7 +12,6 @@ export async function connectDB() {
     console.error("Error in connecting MongoDB: " + error);
   }
 }
-
 
 export async function addData(filename) {
   try {
@@ -26,5 +23,3 @@ export async function addData(filename) {
     console.error("Error adding data: ", error);
   }
 }
-
-
