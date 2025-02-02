@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 const SchemaType = mongoose.Schema.Types;
 
 const resume_info = new mongoose.Schema({
+    userid: {
+      type: SchemaType.ObjectId,
+      required: true,
+      description: "Object ID of User"  
+    },
     firstName: {
         type: SchemaType.String,
         required: true,
@@ -69,7 +74,7 @@ const resume_info = new mongoose.Schema({
             name: {
                 type: SchemaType.String,
                 required: true,
-                description: 'Name of the institution',
+                description: "Name of the university/school/college",
             },
             degree: {
                 type: SchemaType.String,
@@ -77,7 +82,7 @@ const resume_info = new mongoose.Schema({
                 description: 'Degree obtained',
             },
             marksOrCgpa: {
-                type: SchemaType.Number,
+                type: SchemaType.String,
                 description: 'Marks or CGPA obtained',
             },
             timeline: {
@@ -116,13 +121,10 @@ const resume_info = new mongoose.Schema({
                 description: 'End date',
             },
         },
-        detailsAboutWork: {
+        roledescription: {
             type: SchemaType.String,
             description: 'Details about the work',
         },
-    }],
-    skills: [{
-        type: SchemaType.String,
     }],
     projects: [{
         project: {

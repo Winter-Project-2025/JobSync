@@ -11,10 +11,12 @@ function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/login", { email, password })
+      .post(`http://localhost:3000/login`, { email, password })
       .then((result) => {
-        if (result.data === "Success") {
+        console.log(result)
+        if (result.data.message === "Success") {
           localStorage.setItem("user", "true");
+          localStorage.setItem('token', result.data.token);
           window.location.href = "/upload";
         }
       })

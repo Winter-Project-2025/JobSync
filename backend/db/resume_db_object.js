@@ -1,9 +1,10 @@
 import { gemini_data } from "../controllers/gemini.js"
 
 
-export async function resume_object(filename) {
+export async function resume_object(filename,id) {
     const resume_data = await gemini_data(filename);
     const resume_data_object = {
+        userid: id,
         firstName: resume_data.firstName,
         lastName: resume_data.lastName,
         phone: resume_data.phone,

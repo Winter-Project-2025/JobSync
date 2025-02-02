@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const changeVal = () => {
-    localStorage.setItem("user", "false");
+    localStorage.setItem("server", "true");
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    changeVal();
+  }, []);
   return (
     <div>
       <h1>Welcome to JobSync</h1>
