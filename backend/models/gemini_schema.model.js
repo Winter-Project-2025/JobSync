@@ -82,17 +82,17 @@ export const gemini_schema = {
                         properties: {
                             name: {
                                 type: SchemaType.STRING,
-                                description: "Name of the institution",
+                                description: "Name of the university/school/college",
                                 nullable: false,
                             },
                             degree: {
                                 type: SchemaType.STRING,
-                                description: "Degree obtained",
+                                description: "Degree/Field of Study",
                                 nullable: false,
                             },
                             marksOrCgpa: {
-                                type: SchemaType.NUMBER,
-                                description: "Marks or CGPA obtained"
+                                type: SchemaType.STRING,
+                                description: "Marks/Percentage/CGPA/Grade obtained"
                             },
                             timeline: {
                                 type: SchemaType.OBJECT,
@@ -110,7 +110,7 @@ export const gemini_schema = {
                                 required: ["start", "end"]
                             },
                         },
-                        required: ["name", "degree", "timeline"],
+                        required: ["name", "degree", "timeline","marksOrCgpa"],
                     },
                 },
             },
@@ -133,7 +133,7 @@ export const gemini_schema = {
                     },
                     timeline: {
                         type: SchemaType.OBJECT,
-                        description: "Timeline of employment",
+                        description: "Work Period",
                         properties: {
                             start: {
                                 type: SchemaType.STRING,
@@ -146,19 +146,12 @@ export const gemini_schema = {
                         },
                         required: ["start", "end"]
                     },
-                    detailsAboutWork: {
+                    roledescription: {
                         type: SchemaType.STRING,
-                        description: "Details about the work",
+                        description: "Desciption or details of the job role",
                     },
                 },
-                required: ["title", "companyName", "timeline"],
-            },
-        },
-        skills: {
-            type: SchemaType.ARRAY,
-            description: "List of skills",
-            items: {
-                type: SchemaType.STRING,
+                required: ["title", "companyName", "timeline", "roledescription"],
             },
         },
         projects: {
@@ -222,11 +215,11 @@ export const gemini_schema = {
     required: [
         "firstName",
         "lastName",
+        "phone",
         "email",
         "address",
         "education",
         "workExperience",
-        "skills",
         "projects",
     ],
 };

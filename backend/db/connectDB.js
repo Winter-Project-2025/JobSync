@@ -13,9 +13,9 @@ export async function connectDB() {
   }
 }
 
-export async function addData(filename) {
+export async function addData(filename,id) {
   try {
-    const resume_data_object = await resume_object(filename);
+    const resume_data_object = await resume_object(filename,id);
     const data = await resume_details.create(resume_data_object);
 
     console.log("Data added successfully:", data);
